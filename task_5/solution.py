@@ -36,7 +36,7 @@ def solution_16381():
             bin_n += '10'
         return  int(bin_n, 2)
 
-    n = -1          # число для расчета
+    n = 0           # число для расчета
     calc_value = 0  # результат расчета
     while calc_value != 2018:
         n += 1
@@ -84,8 +84,30 @@ def solution_56505():
 
     print(count)
 
+#https://inf-ege.sdamgia.ru/problem?id=15791
+def solution_15791():
+    def sum_bin(bin_str: str) -> int:
+        summ = 0
+        for symbol in bin_str:
+            summ += int(symbol)
+        return summ
+
+    def calc_new_val(n: int) -> int:
+        bin_n : str = bin(n)[2:]
+        bin_n += str(sum_bin(bin_n) % 2)
+        bin_n += str(sum_bin(bin_n) % 2)
+
+        return int(bin_n, 2)
+
+    n, calc_val = 0,0
+    while calc_val < 97:
+        n += 1
+        calc_val = calc_new_val(n)
+
+    print(calc_val)
+
 def main():
-    solution_56505()
+    solution_15791()
 
 
 if __name__ == '__main__':
