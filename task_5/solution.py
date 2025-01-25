@@ -47,21 +47,24 @@ def solution_16381():
 
 #https://inf-ege.sdamgia.ru/problem?id=56505
 def solution_56505():
-    def sum_bin(bin_num: int) -> int:
+    def sum_bin(num: int) -> int:
+        """функция для подсчета суммы цифр числа num"""
         summ = 0
-        while bin_num > 0:
-            summ += bin_num % 10
-            bin_num = bin_num // 10
+        while num > 0:
+            summ += num % 10
+            num = num // 10
 
         return summ
 
     def get_add_value(summ : int) -> str:
+        """функция для выбора добавочного разряда"""
         if summ % 2 == 0:
             return '0'
         return '1'
 
-    def calc_new_bin(n) -> int:
-        bin_n : str = bin(n)[2:]
+    def calc_new_bin(num: int) -> int:
+        """функция для расчета числа по условию задачи"""
+        bin_n : str = bin(num)[2:]
         bin_n += get_add_value(sum_bin(int(bin_n, 2)))
         bin_n += get_add_value(sum_bin(int(bin_n, 2)))
         bin_n += get_add_value(sum_bin(int(bin_n, 2)))
@@ -79,7 +82,7 @@ def solution_56505():
         if 123_456_789 <= calc_value <= 1_987_654_321:
             count += 1
 
-    return count
+    print(count)
 
 def main():
     solution_56505()
