@@ -106,8 +106,31 @@ def solution_15791():
 
     print(calc_val)
 
+#https://inf-ege.sdamgia.ru/problem?id=16882
+def solution_16882():
+    def rev_bin(bin_str: str) -> int:
+        res = ''
+        for symbol in bin_str:
+            if symbol == '1':
+                res += '0'
+            else:
+                res += '1'
+        return int(res, 2)
+
+    def calc_new_val(n: int) -> int:
+        bin_n : str = bin(n)[2:]
+        bin_n = '0'*(8-len(bin_n)) + bin_n
+        return rev_bin(bin_n) - n
+
+    n, calc_val = 0, 0
+    while calc_val != 111:
+        n += 1
+        calc_val = calc_new_val(n)
+
+    print(n)
+
 def main():
-    solution_15791()
+    solution_16882()
 
 
 if __name__ == '__main__':
