@@ -74,10 +74,10 @@ class Solution:
         """
 
         lines = Util.get_file_lines("/Users/Nick/Desktop/ExamPreparation/task_24/files/56524_demo.txt")
-        max_sym_arr = [0] * len(lines)
+
 
         gmax_cnt = -1
-        gmax_cnt_idx = 0
+        max_sym_cnt = 0
 
         for i in range(len(lines)):
             line = lines[i]
@@ -103,13 +103,11 @@ class Solution:
             # условия смены глобального максимума
             if lmax_cnt > gmax_cnt:
                 gmax_cnt = lmax_cnt
-                gmax_cnt_idx = i
-            elif lmax_cnt == gmax_cnt and tmp_dict.get(sym) > max_sym_arr[gmax_cnt_idx]:
-                gmax_cnt_idx = i
+                max_sym_cnt = tmp_dict.get(sym)
+            elif lmax_cnt == gmax_cnt and tmp_dict.get(sym) > max_sym_cnt:
+                max_sym_cnt = tmp_dict.get(sym)
 
-            max_sym_arr[i] = tmp_dict.get(sym)
-
-        print(max_sym_arr[gmax_cnt_idx])
+        print(max_sym_cnt)
 
     @staticmethod
     def run_59847() -> None:
@@ -163,7 +161,7 @@ class Solution:
 
 
 def main():
-    Solution.run_68257()
+    Solution.run_56524()
 
 
 if __name__ == "__main__":
